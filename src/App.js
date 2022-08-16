@@ -1,5 +1,6 @@
 
 import './App.css';
+import TaskList from './components/TasksList';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <header className="App-header">
       
       </header>
+      <TaskList/>
     </div>
   );
 }
