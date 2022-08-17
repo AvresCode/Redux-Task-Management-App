@@ -25,8 +25,8 @@ export const taskSlice = createSlice({
     deleteTask: (state, action) => {
       console.log("delete action", action.payload);
       const id = action.payload;
-     const updatedList = state.tasks.filter((task) => task.id !== id);
-     state.tasks = updatedList;
+      const updatedList = state.tasks.filter((task) => task.id !== id);
+      state.tasks = updatedList;
     },
     toggleCompleted: (state, action) => {
       // which one? => id
@@ -36,8 +36,12 @@ export const taskSlice = createSlice({
       );
       state.tasks = updatedTaskList;
     },
+    toggleShowCompleted: (state, action) => {
+      state.showCompletedTasks = !state.showCompletedTasks;
+    },
   },
 });
 
-export const { addTask, deleteTask, toggleCompleted } = taskSlice.actions;
+export const { addTask, deleteTask, toggleCompleted, toggleShowCompleted } =
+  taskSlice.actions;
 export default taskSlice.reducer;
