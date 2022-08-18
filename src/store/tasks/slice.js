@@ -19,8 +19,8 @@ export const taskSlice = createSlice({
       // console.log(action.payload)
       const task = action.payload;
       const newTask = { id: state.tasks.length + 1, task, completed: false };
-      state.tasks.push(newTask);
-      //state.tasks.length < state.maxTasks ? state.tasks.push(newTask) : state.tasks;
+      //state.tasks.push(newTask);
+    if  ( state.tasks.length < state.maxTasks) {state.tasks.push(newTask) } 
     },
     deleteTask: (state, action) => {
       console.log("delete action", action.payload);

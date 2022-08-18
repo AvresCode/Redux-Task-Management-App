@@ -42,11 +42,13 @@ const TaskList = () => {
       ))}
       <div>
         {" "}
-        {tasksData.tasks.length < tasksData.maxTasks ? (
+     <p> { tasksData.tasks.length === tasksData.maxTasks? (<strong>'No new task can be added'</strong>) : ('')} </p> 
+        <AddTaskForm />
+        {/* {tasksData.tasks.length < tasksData.maxTasks ? (
           <AddTaskForm />
         ) : (
           "No task can be added!"
-        )}
+        )} */}
       </div>{" "}
     </div>
   );
