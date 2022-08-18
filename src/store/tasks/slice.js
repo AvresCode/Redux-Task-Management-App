@@ -15,6 +15,10 @@ export const taskSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
+    changeMaxTasks: (state, action ) => {
+state.maxTasks = action.payload;
+state.tasks.length = action.payload
+    },
     addTask: (state, action) => {
       // console.log(action.payload)
       const task = action.payload;
@@ -42,6 +46,6 @@ export const taskSlice = createSlice({
   },
 });
 
-export const { addTask, deleteTask, toggleCompleted, toggleShowCompleted } =
+export const { addTask, deleteTask, toggleCompleted, toggleShowCompleted, changeMaxTasks } =
   taskSlice.actions;
 export default taskSlice.reducer;

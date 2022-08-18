@@ -4,7 +4,7 @@ import AddTaskForm from "./AddTaskForm";
 import {
   deleteTask,
   toggleCompleted,
-  toggleShowCompleted,
+  toggleShowCompleted, changeMaxTasks
 } from "../store/tasks/slice";
 import { useDispatch } from "react-redux/es/exports";
 import { useState } from "react";
@@ -12,12 +12,21 @@ import { useState } from "react";
 const TaskList = () => {
   const dispatch = useDispatch();
   const tasksData = useSelector(selectTask);
+  const [maximumTask, setMaximumTask] = useState(20);
 
   console.log("list of tasks:", tasksData.tasks);
   return (
     <div>
       {" "}
-      <p> Maximum amount of tasks: {tasksData.maxTasks}</p>
+      <p>
+        {" "}
+        Maximum amount of tasks:{" "}
+        <input
+          type="text"
+          value={maximumTask}
+          onChange={(e) => {setMaximumTask(e.target.value); }}
+        /> <button  onClick={() => dispatch(changeMaxTasks(maximumTask))}> Submit</button>
+      </p>
       <p>
         {" "}
         Show completed tasks:{" "}
@@ -42,7 +51,14 @@ const TaskList = () => {
       ))}
       <div>
         {" "}
-     <p> { tasksData.tasks.length === tasksData.maxTasks? (<strong>'No new task can be added'</strong>) : ('')} </p> 
+        <p>
+          {" "}
+          {tasksData.tasks.length === tasksData.maxTasks ? (
+            <strong>'No new task can be added'</strong>
+          ) : (
+            ""
+          )}{" "}
+        </p>
         <AddTaskForm />
         {/* {tasksData.tasks.length < tasksData.maxTasks ? (
           <AddTaskForm />
